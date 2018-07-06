@@ -80,9 +80,10 @@ The path may change for Mac or Linux system (see https://cloud.google.com/datapr
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "http://*cluster-name*-m:8123" \
 --proxy-server="socks5://localhost:10000" --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" --user-data-dir="C:/temp"
 ```
-- With Http traffic
+- With HTTP traffic
 Open a firewall with the right port.
-THE url to have access to the jupyter notebook will be : http:::ExternalIP:8123
+
+THE url to have access to the jupyter notebook will be : http://ExternalIP:8123
 
 3. Submit a hail job with a python script 
 ```
