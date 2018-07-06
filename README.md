@@ -53,7 +53,8 @@ myscript.py
 
 1. Create a DataProc Cluster
 You can choose the machine instance type in
-https://cloud.google.com/compute/docs/machine-types#standard_machine_types
+https://cloud.google.com/compute/docs/machine-types#standard_machine_types .
+
 You need the init_notebook python script that you have to put in a google bucket. 
 ```
 gcloud dataproc clusters create *cluster-name* \
