@@ -1,7 +1,7 @@
 # Hail-on-Google-Cloud
 
 
-Deploy a Hail cluster (https://hail.is/) on Google Cloud.
+Deploy a Hail cluster (https://hail.is/) in Google Cloud.
 
 
 ## Hail 0.1
