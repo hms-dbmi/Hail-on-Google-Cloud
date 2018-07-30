@@ -52,10 +52,11 @@ myscript.py
 *Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple job.*
 
 1. Create a DataProc Cluster
-You can choose the machine instance type in
+- You can choose the machine instance type in
 https://cloud.google.com/compute/docs/machine-types#standard_machine_types .
+- If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
+- You need the init_notebook python script as one the initialization-actions. Put in a google bucket. 
 
-You need the init_notebook python script that you have to put in a google bucket. 
 ```
 gcloud dataproc clusters create *cluster-name* \
 --project *your-project* \
@@ -66,7 +67,7 @@ gcloud dataproc clusters create *cluster-name* \
 --worker-machine-type n1-highmem-8 \
 --worker-boot-disk-size 75 \
 --image-version=1.2  \
---metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-aa83f2a1d041-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-aa83f2a1d041.zip,MINICONDA_VERSION=4.4.10 \
+--metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-#version_number-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-#version_number.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://path_to/init_notebook.py
 ```
 
