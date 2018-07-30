@@ -52,11 +52,14 @@ myscript.py
 *Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple job.*
 
 1. Create a DataProc Cluster
+
 - You can choose the machine instance type in
 https://cloud.google.com/compute/docs/machine-types#standard_machine_types .
 - If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
 - You need the init_notebook python script as one the initialization-actions. Put in a google bucket. 
+- You need the name of your project and the region. 
 
+Here you have the command to create the Hail google cloud cluster. 
 ```
 gcloud dataproc clusters create *cluster-name* \
 --project *your-project* \
@@ -71,7 +74,7 @@ gcloud dataproc clusters create *cluster-name* \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://path_to/init_notebook.py
 ```
 
-2. Connect your cluster and open jupyter notebook
+2. Connect your cluster and open Jupyter Notebook
 - If you don't want to allow HTTP traffic
 ```
 gcloud compute ssh --project=*your-project* --zone=*your-zone* --ssh-flag="-D" --ssh-flag="10000" --ssh-flag="-N" "*cluster-name*-m"
@@ -82,9 +85,8 @@ The path may change for Mac or Linux system (see https://cloud.google.com/datapr
 --proxy-server="socks5://localhost:10000" --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" --user-data-dir="C:/temp"
 ```
 - With HTTP traffic
-Open a firewall with the right port.
-
-THE url to have access to the jupyter notebook will be : http://ExternalIP:8123
+Open a firewall with the right port #port. You can change the port in the init_notebook.py script. 
+THE url to have access to the Jupyter Notebook will be : http://ExternalIP:#port.
 
 3. Submit a hail job with a python script 
 ```
