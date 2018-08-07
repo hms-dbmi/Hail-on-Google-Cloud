@@ -1,52 +1,6 @@
 # Hail-on-Google-Cloud
 
-
 Deploy a Hail cluster (https://hail.is/) in Google Cloud.
-
-
-## Hail 0.1
-*Learn how to create a dataproc cluster with Hail 0.1 and how to submit python job to this cluster.*
-
-1. Create a DataProc Cluster : 
-```
-gcloud dataproc clusters create *cluster-name* \
---zone *your-zone* \
---master-machine-type n1-highmem-8 \
---master-boot-disk-size 100 \
---num-workers 2 \
---worker-machine-type n1-highmem-8 \
---worker-boot-disk-size 75 \
---num-worker-local-ssds 1 \
---num-preemptible-workers 4 \
---image-version 1.1 \
---project *your-project* \
---properties "spark:spark.driver.extraJavaOptions=-Xss4M,spark:spark.executor.extraJavaOptions=-Xss4M,spark:spark.driver.memory=45g,spark:spark.driver.maxResultSize=30g,spark:spark.task.maxFailures=20,spark:spark.kryoserializer.buffer.max=1g,hdfs:dfs.replication=1" \
---initialization-actions gs://hail-common/hail-init.sh
-```
-
-2. Find out the Hail release Hash value  by running, and copy the value
-```
-gsutil cat gs://hail-common/builds/0.1/latest-hash-spark-2.0.2.txt
-```
-Copy the Hash value that I will call #hash. 
-
-3. Create a python script myscript.py 
-example : 
-```
-from hail import *
-hc = HailContext()
-hc.read('gs://gnomad-public/legacy/exac_browser/ExAC.r1.sites.vds').count()
-```
-4. Submit a job to the cluster
-```
-gcloud dataproc jobs submit pyspark \
---cluster=*cluster-name* \
---files=gs://hail-common/builds/0.1/jars/hail-0.1-#hash-Spark-2.0.2.jar \
---py-files=gs://hail-common/builds/0.1/python/hail-0.1-#hash.zip \
---properties="spark.driver.extraClassPath=./hail-0.1-#hash-Spark-2.0.2.jar,spark.executor.extraClassPath=./hail-0.1-#hash-Spark-2.0.2.jar" *cluster-name*
---project=*your-project* \
-myscript.py 
-```
 
 ## Hail 0.2
 *Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple job.*
@@ -91,6 +45,51 @@ THE url to have access to the Jupyter Notebook will be : http://ExternalIP:#port
 3. Submit a hail job with a python script 
 ```
 gcloud dataproc jobs submit pyspark gs://path-to/python-script.py --cluster=*cluster-name* --project=*your-project*
+```
+
+
+## Hail 0.1
+*Learn how to create a dataproc cluster with Hail 0.1 and how to submit python job to this cluster.*
+
+1. Create a DataProc Cluster : 
+```
+gcloud dataproc clusters create *cluster-name* \
+--zone *your-zone* \
+--master-machine-type n1-highmem-8 \
+--master-boot-disk-size 100 \
+--num-workers 2 \
+--worker-machine-type n1-highmem-8 \
+--worker-boot-disk-size 75 \
+--num-worker-local-ssds 1 \
+--num-preemptible-workers 4 \
+--image-version 1.1 \
+--project *your-project* \
+--properties "spark:spark.driver.extraJavaOptions=-Xss4M,spark:spark.executor.extraJavaOptions=-Xss4M,spark:spark.driver.memory=45g,spark:spark.driver.maxResultSize=30g,spark:spark.task.maxFailures=20,spark:spark.kryoserializer.buffer.max=1g,hdfs:dfs.replication=1" \
+--initialization-actions gs://hail-common/hail-init.sh
+```
+
+2. Find out the Hail release Hash value  by running, and copy the value
+```
+gsutil cat gs://hail-common/builds/0.1/latest-hash-spark-2.0.2.txt
+```
+Copy the Hash value that I will call #hash. 
+
+3. Create a python script myscript.py 
+example : 
+```
+from hail import *
+hc = HailContext()
+hc.read('gs://gnomad-public/legacy/exac_browser/ExAC.r1.sites.vds').count()
+```
+4. Submit a job to the cluster
+```
+gcloud dataproc jobs submit pyspark \
+--cluster=*cluster-name* \
+--files=gs://hail-common/builds/0.1/jars/hail-0.1-#hash-Spark-2.0.2.jar \
+--py-files=gs://hail-common/builds/0.1/python/hail-0.1-#hash.zip \
+--properties="spark.driver.extraClassPath=./hail-0.1-#hash-Spark-2.0.2.jar,spark.executor.extraClassPath=./hail-0.1-#hash-Spark-2.0.2.jar" *cluster-name*
+--project=*your-project* \
+myscript.py 
 ```
 
 
