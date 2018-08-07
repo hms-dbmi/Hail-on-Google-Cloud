@@ -29,18 +29,21 @@ gcloud dataproc clusters create *cluster-name* \
 ```
 
 2. Connect your cluster and open Jupyter Notebook
-- If you don't want to allow HTTP traffic
+
+- Connect by HTTP traffic
+Open a firewall with the right port #port in Network -> VPC network -> Firewall rules
+You can change the port in the init_notebook.py script. 
+The url to have access to the Jupyter Notebook will be : http://ExternalIP:#port.
+
+- Connect by SSH (for windows system)
 ```
 gcloud compute ssh --project=*your-project* --zone=*your-zone* --ssh-flag="-D" --ssh-flag="10000" --ssh-flag="-N" "*cluster-name*-m"
 ```
-The path may change for Mac or Linux system (see https://cloud.google.com/dataproc/docs/concepts/accessing/cluster-web-interfaces)
+The path is different for Mac or Linux system (see https://cloud.google.com/dataproc/docs/concepts/accessing/cluster-web-interfaces)
 ```
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "http://*cluster-name*-m:8123" \
 --proxy-server="socks5://localhost:10000" --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost" --user-data-dir="C:/temp"
 ```
-- With HTTP traffic
-Open a firewall with the right port #port. You can change the port in the init_notebook.py script. 
-THE url to have access to the Jupyter Notebook will be : http://ExternalIP:#port.
 
 3. Submit a hail job with a python script 
 ```
