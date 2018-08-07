@@ -10,7 +10,7 @@ Deploy a Hail cluster (https://hail.is/) in Google Cloud.
 - You can choose the machine instance type in
 https://cloud.google.com/compute/docs/machine-types#standard_machine_types .
 - If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
-- You need the init_notebook python script as one the initialization-actions. Put in a google bucket. 
+- You need the init_notebook python script as one the initialization-actions. Put this file in a google bucket (you can change the port and the password in this script). 
 - You need the name of your project and the region. 
 
 Here you have the command to create the Hail google cloud cluster. 
