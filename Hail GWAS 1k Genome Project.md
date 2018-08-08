@@ -3,7 +3,7 @@
 
 ### https://hail.is/docs/devel/tutorials-landing.html
 
-Inès Krissaane - Nneka Ede
+Inès Krissaane 
 
 ### PHASE 1 - 1000 Genomes Project 
 
