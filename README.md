@@ -28,7 +28,7 @@ gcloud dataproc clusters create *cluster-name* \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://path_to/init_notebook.py
 ```
 
-2. Connect your cluster and open Jupyter Notebook
+2. Connect to your cluster and open Jupyter Notebook
 
 - Connect by HTTP traffic
 Open a firewall with the right port #port in Network -> VPC network -> Firewall rules
@@ -71,7 +71,7 @@ gcloud dataproc clusters create *cluster-name* \
 --initialization-actions gs://hail-common/hail-init.sh
 ```
 
-2. Find out the Hail release Hash value  by running, and copy the value
+2. Find out the Hail release Hash value by running, and copy the value
 ```
 gsutil cat gs://hail-common/builds/0.1/latest-hash-spark-2.0.2.txt
 ```
@@ -84,7 +84,7 @@ from hail import *
 hc = HailContext()
 hc.read('gs://gnomad-public/legacy/exac_browser/ExAC.r1.sites.vds').count()
 ```
-4. Submit a job to the cluster
+4. Submit a hail job to the cluster
 ```
 gcloud dataproc jobs submit pyspark \
 --cluster=*cluster-name* \
