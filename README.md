@@ -4,16 +4,15 @@
 
 Google Cloud SDK is a set of tools that you can use to manage resources and applications hosted on Google Cloud Platform. It will be easier to launch and detete cluster though SDK.
 
-Install the SDK cloud for your specific OS. Follow all the steps provided by Google on https://cloud.google.com/sdk/docs/#deb
+Install the SDK cloud for your specific OS. Follow all the steps described in https://cloud.google.com/sdk/docs/
 
-For Mac or Linux User, it will be fully integrated in your terminal. For Windows user, you will have to use a new command prompt terminal. 
+You will need to provide the name of your project and the region. For Mac or Linux User, it will be fully integrated in your terminal. For Windows user, you will have to use a new command prompt terminal. 
 
-You will need to provide the name of your project and the region. 
 
 
 ## Deploy a Hail 0.2 cluster (https://hail.is/) in Google Cloud.
 
-*Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple python job. And you will know how to delete it. *
+*Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple python job. And you will know how to delete it.*
 
 ### Prerequisites
 
@@ -59,9 +58,9 @@ gcloud dataproc clusters create *cluster-name* \
 
 2. Connect to your cluster and open Jupyter Notebook
 
-The url to have access to the Jupyter Notebook will be : http://ExternalIP:#port.
+The url to have access to the Jupyter Notebook will be : http://ExternalIP:port.
 
-You can find the externalIP in the google API. The port is 8245 by default. The password is *hello-hail* by default. 
+You can find the external IP in the google API. The port is 8245 by default. The password is *hello-hail* by default. 
 
 3. Submit a hail job with a python script 
 ```
