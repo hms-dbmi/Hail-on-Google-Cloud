@@ -27,7 +27,7 @@ role = get_metadata('dataproc-role')
 
 if role == 'Master':
     # additional packages to install
-    
+
     pkgs = [
         'numpy',
         'pandas',
@@ -44,7 +44,19 @@ if role == 'Master':
         'cloudstorage',
         'google.appengine.api',
         'plotly',
-        'gcsfs'
+        'gcsfs',
+        'scikit-learn',
+        'scriptine',
+        'rpy2',
+        'devtools',
+        'ipywidgets',
+        'statsmodels',
+        'datadog',
+        'google-api-python-client',
+        'selenium',
+        'pyensembl',
+        'https://github.com/khramts/assocplots/archive/master.zip',
+        'jgscm'
     ]
 
     # add user-requested packages
@@ -118,7 +130,7 @@ if role == 'Master':
             'c.Application.log_level = "DEBUG"',
             'c.NotebookApp.ip = "*"',
             'c.NotebookApp.open_browser = False',
-            'c.NotebookApp.port = 8123',
+            'c.NotebookApp.port = 8245',
             'c.NotebookApp.token = ""',
             'c.NotebookApp.password = u"sha1:d15606fc8f3d:19e1547069c6304fea74e2e5611fa1e58a4cda94"',
             'c.NotebookApp.contents_manager_class = "jgscm.GoogleStorageContentManager"'
