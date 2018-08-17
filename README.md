@@ -2,7 +2,7 @@
 
 ## Deploy a Hail 0.2 cluster (https://hail.is/) in Google Cloud.
 
-*Learn how to create a dataproc cluster with Hail 0.2 with Jupyter Notebook and all the packages that you will need. You can also submit a simple python job. And you will know how to delete it.*
+Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud.
 
 ### Prerequisites
 
