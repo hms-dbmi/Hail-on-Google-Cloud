@@ -71,6 +71,8 @@ You can find the external IP in the google API. The port is 8245 by default. The
 
 ![](cluster.png)
 
+For example, the URL will be http://35.229.17.83:8245 here. 
+
 
 
 3. Submit a hail job with a python script 
