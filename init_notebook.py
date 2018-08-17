@@ -21,11 +21,13 @@ def mkdir_if_not_exists(path):
         if e.errno != os.errno.EEXIST:
             raise
 
+
 # get role of machine (master or worker)
 role = get_metadata('dataproc-role')
 
 if role == 'Master':
     # additional packages to install
+    
     pkgs = [
         'numpy',
         'pandas',
@@ -40,7 +42,9 @@ if role == 'Master':
         'ipywidgets',
         'google-cloud==0.32.0',
         'cloudstorage',
-        'google.appengine.api'
+        'google.appengine.api',
+        'plotly',
+        'gcsfs'
     ]
 
     # add user-requested packages
@@ -63,6 +67,7 @@ if role == 'Master':
     call(['gsutil', 'cp', jar_path, '/home/hail/hail.jar'])
     call(['gsutil', 'cp', zip_path, '/home/hail/hail.zip'])
 
+ 	
     env_to_set = {
         'PYTHONHASHSEED': '0',
         'PYTHONPATH':
@@ -86,7 +91,6 @@ if role == 'Master':
     for c in conf_to_set:
         call('echo "{}" >> /etc/spark/conf/spark-defaults.conf'.format(c), shell=True)
 
-    # modify custom Spark conf file to reference Hail jar and zip
 
     # create Jupyter kernel spec file
     kernel = {
@@ -116,6 +120,7 @@ if role == 'Master':
             'c.NotebookApp.open_browser = False',
             'c.NotebookApp.port = 8123',
             'c.NotebookApp.token = ""',
+            'c.NotebookApp.password = u"sha1:d15606fc8f3d:19e1547069c6304fea74e2e5611fa1e58a4cda94"',
             'c.NotebookApp.contents_manager_class = "jgscm.GoogleStorageContentManager"'
         ]
         f.write('\n'.join(opts) + '\n')
