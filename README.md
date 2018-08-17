@@ -20,15 +20,17 @@ To be able to launch a hail cluster, dowload and **upload in one of your bucket 
 
 ![](storage.png)
 
+
 You will fist to create a bucket and after upload this script.
+
 
 ![](bucket.png)
 
 ![](upload-file.PNG)
 
-### Some guidelines for the cluster configuration
+### Some guidelines for the cluster configurations
 
-## Cluster Size
+#### Cluster Size
 
 Our advice in terms of cluster size (which are the default settings given in the example that follows) are : 
 
@@ -40,14 +42,16 @@ Our advice in terms of cluster size (which are the default settings given in the
 https://cloud.google.com/compute/docs/machine-types To begin, you can use *n1-highmem-32* ($1.8944 per hour).
 Always try to keep an eye on the price of your machines with https://cloud.google.com/compute/pricing or https://cloud.google.com/products/calculator/
 
-## Hail version
+#### Hail version
 
 Hail is still in the development phase and a new version is basically available every day.
 If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. 
 
 ![](hail-version.png)
 
-All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. Here  ```1bd08b90e0a0``` for example.
+All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
+
+Here  ```1bd08b90e0a0``` for example.
 
 
 ### An example step by step !
@@ -63,8 +67,8 @@ gcloud dataproc clusters create *cluster-name* \
 --num-workers 3 \
 --worker-machine-type n1-highmem-32 \
 --image-version=1.2  \
---metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-#version_number-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-#version_number.zip,MINICONDA_VERSION=4.4.10 \
---initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://path_to/init_notebook.py
+--metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-1bd08b90e0a0-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-1bd08b90e0a0.zip,MINICONDA_VERSION=4.4.10 \
+--initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
 ```
 The cluster installation is complete in less than 10 minutes.
 
