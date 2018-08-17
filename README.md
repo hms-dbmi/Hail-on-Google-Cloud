@@ -73,9 +73,7 @@ gcloud dataproc clusters create *cluster-name* \
 
 The cluster installation is complete in less than 10 minutes.
 
-
 ![](cluster-creation.png)
-
 
 2. Connect to your cluster and open Jupyter Notebook
 
