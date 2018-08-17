@@ -16,7 +16,7 @@ Google Cloud SDK is a set of tools that you can use to manage resources and appl
 
 3. Download the initialization script
 
-To be able to launch a hail cluster, dowload and **upload in one of your bucket in google storage the init_notebook.py** available in this repository. It will be one of the initialization-actions. This script installs appropriately Hail, Python 3.6 with the most used packages (matplotly, pandas, searborn ...) and Jupyter notebook.
+To be able to launch a hail cluster, download and **upload in one of your bucket in google storage the init_notebook.py** available in this repository. It will be one of the initialization-actions. This script installs appropriately Hail, Python 3.6 with the most used packages (matplotly, pandas, searborn ...) and Jupyter notebook.
 
 ![](storage.png)
 
