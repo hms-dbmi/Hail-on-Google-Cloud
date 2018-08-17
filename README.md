@@ -72,6 +72,7 @@ gcloud dataproc clusters create *cluster-name* \
 ```
 The cluster installation is complete in less than 10 minutes.
 
+
 ![](cluster-creation.png)
 
 
