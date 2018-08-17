@@ -24,7 +24,7 @@ You will fist to create a bucket and after upload this script.
 
 ![](bucket.png)
 
-![](upload-file.png)
+![](upload-file.PNG)
 
 ### Some guidelines for the cluster configuration
 
