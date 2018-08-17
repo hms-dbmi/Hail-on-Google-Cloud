@@ -21,7 +21,7 @@ To be able to launch a hail cluster, download and **upload in one of your bucket
 ![](storage.png)
 
 
-You will fist to create a bucket and after upload this script.
+You will need fist to create a bucket and after to upload the init_notebook.py script.
 
 
 ![](bucket.png)
