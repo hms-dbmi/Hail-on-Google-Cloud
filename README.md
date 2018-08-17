@@ -70,6 +70,7 @@ gcloud dataproc clusters create *cluster-name* \
 --metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-1bd08b90e0a0-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-1bd08b90e0a0.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
 ```
+
 The cluster installation is complete in less than 10 minutes.
 
 
@@ -95,7 +96,7 @@ gcloud dataproc jobs submit pyspark gs://path-to/python-script.py --cluster=*clu
 
 4. Delete the cluster 
 
-Don't forget to delete your cluster if you don't need it anymore.
+Don't forget to delete your cluster if you don't need it anymore !
 ```
 gcloud dataproc clusters delete *cluster-name*
 ```
