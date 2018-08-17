@@ -18,8 +18,17 @@ Google Cloud SDK is a set of tools that you can use to manage resources and appl
 
 To be able to launch a hail cluster, dowload and **upload in one of your bucket in google storage the init_notebook.py** available in this repository. It will be one of the initialization-actions. This script installs appropriately Hail, Python 3.6 with the most used packages (matplotly, pandas, searborn ...) and Jupyter notebook.
 
+![](storage.png)
 
-### Some guidelines for the cluster size and configurations
+You will fist to create a bucket and after upload this script.
+
+![](bucket.png)
+
+![](upload-file.png)
+
+### Some guidelines for the cluster configuration
+
+## Cluster Size
 
 Our advice in terms of cluster size (which are the default settings given in the example that follows) are : 
 
@@ -29,22 +38,21 @@ Our advice in terms of cluster size (which are the default settings given in the
 
 - For the worker nodes, the machine will be identical and it must be chosen according to your needs. You can choose the machine instance type in
 https://cloud.google.com/compute/docs/machine-types To begin, you can use *n1-highmem-32* ($1.8944 per hour).
-
 Always try to keep an eye on the price of your machines with https://cloud.google.com/compute/pricing or https://cloud.google.com/products/calculator/
+
+## Hail version
 
 Hail is still in the development phase and a new version is basically available every day.
 If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. 
 
 ![](hail-version.png)
 
-All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
+All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. Here  ```1bd08b90e0a0``` for example.
 
 
+### An example step by step !
 
-
-### An example step by step
-
-Use your terminal (or the SDK terminal for windows user) to type the following command. 
+Use your terminal (or the SDK terminal for windows user) to type all the following commands. 
 
 1. Launch a Hail cluster 
 ```
