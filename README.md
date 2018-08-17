@@ -14,7 +14,7 @@ Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud.
 
 Google Cloud SDK is a set of tools that you can use to manage resources and applications hosted on Google Cloud Platform. It will be easier to launch and detete cluster though SDK. **Install the SDK cloud** for your specific OS. Follow all the steps described in https://cloud.google.com/sdk/docs/. You will need **to provide the name of your project and the region**. For Mac or Linux User, it will be fully integrated in your terminal. For Windows user, you will have to use a new command prompt terminal. 
 
-3. Download the initalization script
+3. Download the initialization script
 
 To be able to launch a hail cluster, dowload and **upload in one of your bucket in google storage the init_notebook.py** available in this repository. It will be one of the initialization-actions. This script installs appropriately Hail, Python 3.6 with the most used packages (matplotly, pandas, searborn ...) and Jupyter notebook.
 
@@ -44,25 +44,23 @@ All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://ha
 
 ### An example step by step
 
+Use your terminal (or the SDK terminal for windows user) to type the following command. 
+
 1. Launch a Hail cluster 
-
-Tap in your terminal (or in the SDK terminal for windows user).
-
 ```
 gcloud dataproc clusters create *cluster-name* \
 --project *your-project* \
 --zone *your-zone* \
 --master-machine-type n1-standard-2 \
---master-boot-disk-size 100 \
 --num-workers 3 \
 --worker-machine-type n1-highmem-32 \
---worker-boot-disk-size 75 \
 --image-version=1.2  \
 --metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-#version_number-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-#version_number.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://path_to/init_notebook.py
 ```
+The cluster installation is complete in less than 10 minutes.
 
-![](creation-cluster.png)
+![](cluster-creation.png)
 
 
 2. Connect to your cluster and open Jupyter Notebook
@@ -73,12 +71,16 @@ You can find the external IP in the google API. The port is 8245 by default. The
 
 ![](cluster.png)
 
+
+
 3. Submit a hail job with a python script 
 ```
 gcloud dataproc jobs submit pyspark gs://path-to/python-script.py --cluster=*cluster-name* --project=*your-project*
 ```
 
 4. Delete the cluster 
+
+Don't forget to delete your cluster if you don't need it anymore.
 ```
 gcloud dataproc clusters delete *cluster-name*
 ```
