@@ -12,7 +12,7 @@ Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud.
 
 2. Install Google Cloud SDK
 
-Google Cloud SDK is a set of tools that you can use to manage resources and applications hosted on Google Cloud Platform. It will be easier to launch and detete cluster though SDK. **Install the SDK cloud** for your specific OS. Follow all the steps described in https://cloud.google.com/sdk/docs/. You will need **to provide the name of your project and the region**. For Mac or Linux User, it will be fully integrated in your terminal. For Windows user, you will have to use a new command prompt terminal. 
+Google Cloud SDK is a set of tools that you can use to manage resources and applications hosted on Google Cloud Platform. It will be easier to launch and detete cluster though SDK. **Install the SDK cloud** for your specific OS. Follow all the steps described in https://cloud.google.com/sdk/docs/. You will need **to provide the name of your project**. For Mac or Linux User, it will be fully integrated in your terminal. For Windows user, you will have to use a new command prompt terminal. 
 
 3. Download the initialization script
 
@@ -62,7 +62,7 @@ Use your terminal (or the SDK terminal for windows user) to type all the followi
 ```
 gcloud dataproc clusters create *cluster-name* \
 --project *your-project* \
---zone *your-zone* \
+--zone=us-east1-d \
 --master-machine-type n1-standard-2 \
 --num-workers 3 \
 --worker-machine-type n1-highmem-32 \
@@ -79,7 +79,11 @@ The cluster installation is complete in less than 10 minutes.
 
 The url to have access to the Jupyter Notebook will be : http://ExternalIP:port.
 
-You can find the external IP in the google API. The port is 8245 by default. The password is *hello-hail* by default. 
+You can find the external IP in the google API. The port is 8245 by default. You have to open a firewall rule to allow traffic to and from your virtual machines. 
+
+![](firewall.png)
+
+The password is *hello-hail* by default. 
 
 ![](cluster.png)
 
