@@ -1,9 +1,0 @@
-n1-standard-16
-n1-standard-32
-n1-standard-64
-n1-highmem-16
-n1-highmem-32
-n1-highmem-64
-n1-highcpu-16
-n1-highcpu-32
-n1-highcpu-64
