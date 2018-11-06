@@ -49,12 +49,12 @@ https://cloud.google.com/dataproc/docs/concepts/compute/preemptible-vms
 
 #### Hail version
 
-Hail is still in the development phase and a new version is basically available every day.
+Hail is now released but Hail team commits regularly to solve some issues.
 If you want to create a cluster with the latest version of Hail 0.2, you have to retrieve the number from https://github.com/hail-is/hail. 
 
 ![](hail-version.png)
 
-All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/devel/jars ``` and ```gsutil ls -r gs://hail-common/builds/devel/python ``` Replace #version_number with the version that you want. 
+All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/0.2/jars ``` and ```gsutil ls -r gs://hail-common/builds/0.2/python ``` Replace #version_number with the version that you want. 
 
 Here  ```1bd08b90e0a0``` for example.
 
@@ -85,7 +85,7 @@ The cluster installation is complete in less than 10 minutes.
 
 The url to have access to the Jupyter Notebook will be : http://ExternalIP:port.
 
-You can find the external IP in the google API. The port is 8245 by default. You have to open a firewall rule to allow traffic to and from your virtual machines (go to VPC Network -> Firewall rules -> Create firewall rule). 
+You can find the external IP in the google API. The port is 8123 by default. You have to open a firewall rule to allow traffic to and from your virtual machines (go to VPC Network -> Firewall rules -> Create firewall rule). 
 
 ![](firewall.png)
 
