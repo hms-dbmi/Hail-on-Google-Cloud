@@ -4,6 +4,8 @@
 
 Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud.
 
+For MAC OS, you can use **cloudtools**, see https://github.com/Nealelab/cloudtools .
+
 ### Prerequisites
 
 1. Have a Google Cloud Account
@@ -42,6 +44,9 @@ Our advice in terms of cluster size (which are the default settings given in the
 https://cloud.google.com/compute/docs/machine-types To begin, you can use *n1-highmem-32* ($1.8944 per hour).
 Always try to keep an eye on the price of your machines with https://cloud.google.com/compute/pricing or https://cloud.google.com/products/calculator/
 
+- You can use preemptile worker nodes to create very large clusters at a lower total cost.
+https://cloud.google.com/dataproc/docs/concepts/compute/preemptible-vms
+
 #### Hail version
 
 Hail is still in the development phase and a new version is basically available every day.
@@ -66,8 +71,9 @@ gcloud dataproc clusters create *cluster-name* \
 --master-machine-type n1-standard-2 \
 --num-workers 3 \
 --worker-machine-type n1-highmem-32 \
---image-version=1.2  \
---metadata=JAR=gs://hail-common/builds/devel/jars/hail-devel-1bd08b90e0a0-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/devel/python/hail-devel-1bd08b90e0a0.zip,MINICONDA_VERSION=4.4.10 \
+--num-preemptible-workers=2 
+--image-version=1.2-deb9 \
+--metadata=JAR=gs://hail-common/builds/0.2/jars/hail-0.2-29fbaeaf265e-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/0.2/python/hail-0.2-29fbaeaf265e.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
 ```
 
