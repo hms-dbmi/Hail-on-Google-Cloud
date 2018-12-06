@@ -56,7 +56,7 @@ If you want to create a cluster with the latest version of Hail 0.2, you have to
 
 All the JAR and ZIP files are available via the command  ```gsutil ls -r gs://hail-common/builds/0.2/jars ``` and ```gsutil ls -r gs://hail-common/builds/0.2/python ``` Replace #version_number with the version that you want. 
 
-Here  ```1bd08b90e0a0``` for example.
+Here  ```d33e2d1c19b2``` for example.
 
 
 ### An example step by step !
@@ -69,13 +69,15 @@ gcloud dataproc clusters create *cluster-name* \
 --project *your-project* \
 --zone=us-east1-d \
 --master-machine-type n1-standard-2 \
---num-workers 3 \
---worker-machine-type n1-highmem-32 \
+--num-workers 2 \
+--worker-machine-type n1-standard-16 \
 --num-preemptible-workers=2 
 --image-version=1.2-deb9 \
---metadata=JAR=gs://hail-common/builds/0.2/jars/hail-0.2-29fbaeaf265e-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/0.2/python/hail-0.2-29fbaeaf265e.zip,MINICONDA_VERSION=4.4.10 \
+--metadata=JAR=gs://hail-common/builds/0.2/jars/hail-0.2-d33e2d1c19b2-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/0.2/python/hail-0.2-d33e2d1c19b2.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
 ```
+
+
 
 The cluster installation is complete in less than 10 minutes.
 
