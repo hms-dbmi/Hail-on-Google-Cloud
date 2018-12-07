@@ -76,7 +76,7 @@ gcloud dataproc clusters create *cluster-name* \
 --metadata=JAR=gs://hail-common/builds/0.2/jars/hail-0.2-d33e2d1c19b2-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/0.2/python/hail-0.2-d33e2d1c19b2.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
 ```
-
+Be careful to use the right path to the init_notebook : gs://my-first-bucket/init_notebook.py. 
 
 
 The cluster installation is complete in less than 10 minutes.
@@ -91,7 +91,9 @@ You can find the external IP in the google API. The port is 8123 by default. You
 
 ![](firewall.png)
 
-To connect and open Jupyter Notebook for this specific example, you will use the URL http://35.229.17.83:8245. 
+
+
+To connect and open Jupyter Notebook for this specific example, you will use the URL http://35.229.17.83:8123. 
 And the password is *hello-hail* by default. 
 
 
