@@ -70,8 +70,8 @@ gcloud dataproc clusters create *cluster-name* \
 --zone=us-east1-d \
 --master-machine-type n1-standard-2 \
 --num-workers 2 \
---worker-machine-type n1-standard-16 \
---num-preemptible-workers=2 
+--worker-machine-type n1-standard-8 \
+--num-preemptible-workers=0 \
 --image-version=1.2-deb9 \
 --metadata=JAR=gs://hail-common/builds/0.2/jars/hail-0.2-d33e2d1c19b2-Spark-2.2.0.jar,ZIP=gs://hail-common/builds/0.2/python/hail-0.2-d33e2d1c19b2.zip,MINICONDA_VERSION=4.4.10 \
 --initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://my-first-bucket/init_notebook.py
