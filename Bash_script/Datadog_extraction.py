@@ -13,8 +13,8 @@ end   = args[2]
 host  = args[3]
 
 options = {
-    'api_key': '24ad239484362ebba0dd7f2391658c91', 
-    'app_key': '272f903f5d4318844691f06aaccd337ab14ec2d8'
+    'api_key': '', 
+    'app_key': ''
 }
 initialize(**options)
 
