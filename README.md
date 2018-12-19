@@ -85,19 +85,23 @@ The cluster installation is complete in less than 10 minutes.
 
 2. Connect to your cluster and open Jupyter Notebook
 
-The url to have access to the Jupyter Notebook will be : http://ExternalIP:port.
+The url to have access to the Jupyter Notebook will be : http://ExternalIP-master-node:port.
 
 You can find the external IP in the google API. The port is 8123 by default. You have to open a firewall rule to allow traffic to and from your virtual machines (go to VPC Network -> Firewall rules -> Create firewall rule). 
 
 ![](firewall.png)
 
 
-
-To connect and open Jupyter Notebook for this specific example, you will use the URL http://35.229.17.83:8123. 
-And the password is *hello-hail* by default. 
-
-
 ![](cluster.png)
+
+To connect and open Jupyter Notebook **for this specific example**, you will use the URL http://35.229.17.83:8123.
+
+For your own cluster, copy your own external IP adress instead of 35.229.17.83.
+
+And the password is *hail-class* by default. 
+
+
+
 
 
 3. Submit a hail job with a python script 
