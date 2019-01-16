@@ -1,8 +1,8 @@
 # Hail-on-Google-Cloud
 
-## Deploy a Hail 0.2 cluster (https://hail.is/) in Google Cloud.
+## Deploy a Hail 0.2 cluster (https://hail.is/) in Google Cloud Platform.
 
-Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud.
+Learn how to create a dataproc cluster with Hail 0.2 on Google Cloud Platform.
 
 For MAC OS, you can use **cloudtools**, see https://github.com/Nealelab/cloudtools .
 
