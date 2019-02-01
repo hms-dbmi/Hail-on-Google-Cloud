@@ -24,8 +24,8 @@ from google.cloud import storage
 storage.Client()
 client = storage.Client()
 import gcsfs
-fs = gcsfs.GCSFileSystem(project='copd-genes')
-bucket = client.get_bucket('last-results')
+fs = gcsfs.GCSFileSystem(project='your-project')
+bucket = client.get_bucket('your-bucket')
 
 import hail as hl
 import hail.expr.aggregators as agg
@@ -48,26 +48,6 @@ mt=mt.filter_rows(hl.is_snp(mt.alleles[0], mt.alleles[1]))
 table = (hl.import_table('gs://ines-work/KG-annotation-with-sexencoder.csv', delimiter=',', missing='', quote='"',types={'Gender_Classification':hl.tfloat64}).key_by('Sample'))
 mt = mt.annotate_cols(**table[mt.s])
 
-# from sklearn.preprocessing import LabelEncoder
-# with fs.open('1k_genome/1000-genomes/other/sample_info/sample_info.csv',"rt") as f:
-#     data = pd.read_csv(f, na_values = str, header = 0)
-#
-# key = data['Gender'].values
-#
-# #create Label encoder for Gender
-# le = LabelEncoder()
-# le.fit(['male', 'female'])
-# table1 = hl.Table.to_pandas(table)
-# table1["Gender_Classification"] = pd.Series(le.transform(key).astype(float))
-#
-# bucket = client.get_bucket('ines-work')
-#
-# table1.to_csv('1KG-annotation-with-sexencoder', encoding='utf-8', index=False) #write a csv in the local directory
-# blob = bucket.blob('KG-annotation-with-sexencoder.csv')
-# blob.upload_from_filename('1KG-annotation-with-sexencoder')
-
-
-
 #print(mt.aggregate_cols(agg.counter(mt.Gender_Classification))) {'0.0': 567, '1.0': 525}
 
 #pca
@@ -77,8 +57,6 @@ pca_eigenvalues, pca_scores, _ = hl.hwe_normalized_pca(mt.GT, k = 2)
 
 
 mt = mt.annotate_cols(pca = pca_scores[mt.s])
-
-
 x= pca_scores.scores[0]
 y= pca_scores.scores[1]
 label=mt.cols()[pca_scores.s].Super_Population
