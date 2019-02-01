@@ -2,7 +2,7 @@
 
 You can choose the different cluster configurations you want by editing the following text files :
 
-- machine_names_google.txt (choose the virtual instance among https://cloud.google.com/compute/pricing) 
+- VM_google.txt (choose the virtual instance among https://cloud.google.com/compute/pricing) 
 - nodes_google.txt (i.e number of preemptible nodes - if 0, you will have a cluster with 2 standard worker nodes)  
 
 You have to choose the python file that you want to submit to your cluster and specify it in the shell script pipeline.sh by editing *your-python-file*. 
