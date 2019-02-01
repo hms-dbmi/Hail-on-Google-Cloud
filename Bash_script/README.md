@@ -5,6 +5,8 @@ You can choose the different cluster configurations you want by editing the foll
 - VM_google.txt (choose the virtual instance among https://cloud.google.com/compute/pricing) 
 - nodes_google.txt (i.e number of preemptible nodes - if 0, you will have a cluster with 2 standard worker nodes)  
 
+By default, the master node is a *n1-standard-4* virtual machine, you can change that in Final_shell_script.sh.
+
 You have to choose the python file that you want to submit to your cluster and specify it in the shell script pipeline.sh by editing *your-python-file*. 
 ``` gcloud dataproc jobs submit pyspark gs://your-bucket/your-python-file.py --cluster=hail$count --project=your-project ```
 
@@ -13,6 +15,8 @@ You also have to edit in pipeline.sh the following :
 - *your-project* : the name of your project in GCP 
 - *your-zone* : the region where you have enough credentials to spin up the cluster 
 - *your-network* : the network on GCP (if you want to use the default one, remove this argument)
+
+You can also change the version of Hail used (here d33e2d1c19b2) by remplacing this number directly in pipeline.sh .
 
 To launch the script, you just need to do the following command-line into a terminal : 
 ```./Final_shell_script.sh ```
