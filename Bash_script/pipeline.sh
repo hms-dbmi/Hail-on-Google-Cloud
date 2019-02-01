@@ -19,7 +19,7 @@ test()
 		--image-version=1.2-deb9 \
 		--num-preemptible-workers=$N \
     		--network=your-network \
-		--initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://your-bucket/script.py, gs://install_datadog.sh 
+		--initialization-actions=gs://dataproc-initialization-actions/conda/bootstrap-conda.sh,gs://your-bucket/script.py, gs://your-bucket/install_datadog.sh 
 
 
 	#submit job (48hours max) timeout 172800s
