@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Final Script - 13/08/2018 Ines Krissaane
+# Final Script - 02/01/2019 
 echo "DEBUT"
 count = 0
 while read W; do
